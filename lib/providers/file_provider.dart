@@ -10,6 +10,7 @@ class FileProvider with ChangeNotifier{
   List<DownloadedFile> files = [];
   // очередь выполнения загрузки с ограничением в 3 параллельных процесса
   final queue = Queue(parallel: 3);
+  bool onComplete = false;
 
   FileProvider.initialize(){
     loadFiles();
@@ -35,6 +36,18 @@ class FileProvider with ChangeNotifier{
     int index = files.indexOf(file);
     file.status = status;
     files[index] = file;
+    notifyListeners();
+    ChangeOnComplete();
+
+  }
+  Future<void> ChangeOnComplete()async{
+    onComplete = false;
+    for (var file in files) {
+      if(file.status.contains("загружен")){
+        onComplete = true;
+      };
+    }
+    print(onComplete);
     notifyListeners();
   }
 }

@@ -61,7 +61,7 @@ class _DownloadFilesPageState extends State<DownloadFilesPage> {
           fileProvider.changeFileStatus(file, "загружается");
           await Future.delayed(Duration(seconds: file.second));
         })
-        .then((result) => fileProvider.changeFileStatus(file, "Загружен")));
+        .then((result) => fileProvider.changeFileStatus(file, "загружен")));
   }
 
   void unawaited(Future<void> future) {}

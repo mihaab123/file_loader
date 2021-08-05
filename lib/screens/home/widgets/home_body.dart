@@ -18,8 +18,8 @@ class _HomeBodyState extends State<HomeBody> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // кнопки
-          ElevatedButton(onPressed: fileProvider.files.length==0? null :()=>SaveButton(), child: Text("Сохранить")),
-          ElevatedButton(onPressed: fileProvider.files.length==0? null :()=>fileProvider.deleteFiles(), child: Text("Сбросить"))
+          ElevatedButton(onPressed: fileProvider.files.length==0 ||!fileProvider.onComplete ? null :()=>SaveButton(), child: Text("Сохранить")),
+          ElevatedButton(onPressed: fileProvider.files.length==0 ||!fileProvider.onComplete ? null :()=>fileProvider.deleteFiles(), child: Text("Сбросить"))
         ],
       ),
     );
