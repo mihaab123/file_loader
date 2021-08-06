@@ -15,6 +15,7 @@ class _DownloadFileBodyState extends State<DownloadFileBody> {
   @override
   Widget build(BuildContext context) {
     final fileProvider = Provider.of<FileProvider>(context);
+    // построение списка файлов
     return ListView.builder(
       itemBuilder: (_, index) {
         return FileCard(file: fileProvider.files[index],);
